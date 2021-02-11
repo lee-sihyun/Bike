@@ -5,18 +5,11 @@
 <head>
 
 <style type="text/css">
-
-
 body{
-
 margin: 0 auto;
 /*width:1265px;*/
 height:200px;
-
 }
-
-
-
 </style>
 
 
@@ -29,9 +22,7 @@ height:200px;
 
 	<%
 		String center = request.getParameter("center");
-
 	if (center == null) {
-
 		center = "Center.jsp";
 	}
 	%>
@@ -52,7 +43,7 @@ height:200px;
 
 			<td><jsp:include page="<%=center %>"></jsp:include></td>
 		</tr>
-		
+
 		<!-- 푸터 -->
 
 
@@ -67,4 +58,4 @@ height:200px;
 
 
 </body>
-</html>
+</html> 
