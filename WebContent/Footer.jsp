@@ -6,7 +6,7 @@
 <body>
 	<table>
 		<tr>
-			<td align="center"><img alt="" src="img/Footer.JPG">
+			<td align="center"><img alt="" src="img/Template/Footer.JPG">
 
 			</td>
 			

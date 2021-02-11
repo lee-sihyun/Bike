@@ -7,25 +7,25 @@
 <body>
 	<table>
 		<tr>
-			<td align="center"><img alt="" src="img/Maincenter1.JPG">
+			<td align="center"><img alt="" src="img/Template/Maincenter1.JPG">
 
 			</td>
 		</tr>
 
 		<tr>
-			<td align="center"><img alt="" src="img/Maincenter2.JPG">
+			<td align="center"><img alt="" src="img/Template/Maincenter2.JPG">
 
 			</td>
 		</tr>
 
 
 		<tr>
-			<td align="center"><img alt="" src="img/Maincenter3.JPG"></td>
+			<td align="center"><img alt="" src="img/Template/Maincenter3.JPG"></td>
 		</tr>
 
 		<tr>
 
-			<td align="center"><img alt="" src="img/Maincenter4.JPG"></td>
+			<td align="center"><img alt="" src="img/Template/Maincenter4.JPG"></td>
 
 
 
