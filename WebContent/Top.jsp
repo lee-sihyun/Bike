@@ -18,6 +18,15 @@ a {
 	-webkit-box-shadow: 0 0 0 1000px white inset;
 	color: green;
 }
+
+.rink a {
+	margin-right: 80px;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 17px;
+	color: #222;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -30,6 +39,8 @@ a {
 		id = "GUEST";
 	}
 	%>
+
+
 
 
 
@@ -71,31 +82,19 @@ a {
 
 
 
-		<tr>
-
-			<td align="center"><a href="#">사업소개</a></td>
-
-			<td align="center"><a href="#">대여소조회</a></td>
-
-
-			<td align="center"><a href="#">예약확인</a></td>
-
-
-
-			<td align="center"><a href="#">자유게시판</a></td>
-
-
-
-
-
-		</tr>
-
-
-
 
 
 
 	</table>
+
+	<div class="rink">
+		<a href="BikeMain.jsp?center=reserve/BikeList.jsp">대여하기</a> 
+		<a href="#">예약확인</a> 
+		<a href="#">자유게시판</a> <a
+			href="#">공지사항</a>
+
+	</div>
+
 
 
 	<script type="text/javascript">
