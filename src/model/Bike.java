@@ -25,7 +25,7 @@ public class Bike extends ConnectionPool {
 				bean = new BikeBean();
 				bean.setNo(rs.getInt(1));
 				bean.setName(rs.getString(2));
-				bean.setCategory(rs.getString(3));
+				bean.setCategory(rs.getInt(3));
 				bean.setPrice(rs.getInt(4));
 				bean.setImg(rs.getString(5));
 				bean.setInfo(rs.getString(6));
@@ -62,7 +62,7 @@ public class Bike extends ConnectionPool {
 				bean = new BikeBean();
 				bean.setNo(rs.getInt(1));
 				bean.setName(rs.getString(2));
-				bean.setCategory(rs.getString(3));
+				bean.setCategory(rs.getInt(3));
 				bean.setPrice(rs.getInt(4));
 				bean.setImg(rs.getString(5));
 				bean.setInfo(rs.getString(6));
@@ -100,7 +100,7 @@ public class Bike extends ConnectionPool {
 				
 				bean.setNo(rs.getInt(1));
 				bean.setName(rs.getString(2));
-				bean.setCategory(rs.getString(3));
+				bean.setCategory(rs.getInt(3));
 				bean.setPrice(rs.getInt(4));
 				bean.setImg(rs.getString(5));
 				bean.setInfo(rs.getString(6));

@@ -16,7 +16,7 @@ public class BikeRe {
 	private int no;
 	private String id;
 	private int dday;
-	private String rady;
+	private String rday;
 	private int charger;
 	public int getNo() {
 		return no;
@@ -36,11 +36,11 @@ public class BikeRe {
 	public void setDday(int dday) {
 		this.dday = dday;
 	}
-	public String getRady() {
-		return rady;
+	public String getRday() {
+		return rday;
 	}
-	public void setRady(String rady) {
-		this.rady = rady;
+	public void setRday(String rday) {
+		this.rday = rday;
 	}
 	public int getCharger() {
 		return charger;
@@ -51,7 +51,6 @@ public class BikeRe {
 	
 	
 	
-
 	
 	
 	

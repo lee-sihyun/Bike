@@ -17,13 +17,19 @@ public class BikeBean {
 
 	private int no;
 	private String name;
-	private String category;
+	private int category;
 	private int price;
 	private String img;
 	private String info;
 	
 	
 	
+	public int getCategory() {
+		return category;
+	}
+	public void setCategory(int category) {
+		this.category = category;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -36,12 +42,7 @@ public class BikeBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
+	 
 	public int getPrice() {
 		return price;
 	}

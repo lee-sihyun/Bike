@@ -91,7 +91,7 @@ a {
 		<a href="BikeMain.jsp?center=reserve/BikeList.jsp">대여하기</a> 
 		<a href="#">예약확인</a> 
 		<a href="#">자유게시판</a> <a
-			href="#">공지사항</a>
+			href="BikeMain.jsp?center=board/NoticeBoard.jsp">공지사항</a>
 
 	</div>
 

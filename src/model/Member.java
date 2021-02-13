@@ -2,29 +2,21 @@ package model;
 
 import bean.*;
 
-public class Member  extends ConnectionPool{
+public class Member extends ConnectionPool {
 
-	
-	
-	
-	//회원가입- 회원정보를 저장하는 메소드
+	// 회원가입- 회원정보를 저장하는 메소드
 	public void insertMember(MemberBean mbean) {
 		try {
-			/*이름    널?       유형            
------ -------- ------------- 
-ID    NOT NULL VARCHAR2(500) 
-PASS  NOT NULL VARCHAR2(500) 
-EMAIL NOT NULL VARCHAR2(500) 
-TEL   NOT NULL VARCHAR2(500) 
-JOB   NOT NULL VARCHAR2(500) 
-AGE   NOT NULL VARCHAR2(500) 
-INFO           VARCHAR2(500) 
- */
+			/*
+			 * 이름 널? 유형 ----- -------- ------------- ID NOT NULL VARCHAR2(500) PASS NOT NULL
+			 * VARCHAR2(500) EMAIL NOT NULL VARCHAR2(500) TEL NOT NULL VARCHAR2(500) JOB NOT
+			 * NULL VARCHAR2(500) AGE NOT NULL VARCHAR2(500) INFO VARCHAR2(500)
+			 */
 			getcon();
-			String sql="insert into member values(?,?,?,?,?,?,?)";
-			
-			pstmt=con.prepareStatement(sql);
-			
+			String sql = "insert into member values(?,?,?,?,?,?,?)";
+
+			pstmt = con.prepareStatement(sql);
+
 			pstmt.setString(1, mbean.getId());
 			pstmt.setString(2, mbean.getPass());
 			pstmt.setString(3, mbean.getEmail());
@@ -32,26 +24,43 @@ INFO           VARCHAR2(500)
 			pstmt.setString(5, mbean.getJob());
 			pstmt.setString(6, mbean.getAge());
 			pstmt.setString(7, mbean.getInfo());
-	
-		
+
 			pstmt.executeUpdate();
 			con.close();
-			
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+	//로그인 검증 LoginProc.jsp 
+	public int getMemer(String id, String pass) {
+
+		int result = 0;//count 함수를 이용하여 0이면 회원이 없도록 설정
+		getcon();
+
+		try {
+			String sql = "SELECT COUNT(*) FROM MEMBER WHERE ID=? AND PASS=?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+
+				result = rs.getInt(1); //0또는 1값이 저장
+			}
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+
+	}
+
 }
