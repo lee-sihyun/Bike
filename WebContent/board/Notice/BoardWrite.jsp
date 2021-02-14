@@ -44,7 +44,8 @@
 
 
 
-	<form action="board/Notice/BoardWriteProc.jsp" method="get" name="BwcForm" onsubmit="return trim()">
+	<form action="board/Notice/BoardWriteProc.jsp" method="get" 
+	name="BwcForm" onsubmit="return trim();">
 		
 		<table width="600" border="1" bordercolor="gray">
 
@@ -79,13 +80,13 @@
 			var f = document.BwcForm;
 
 			if (f.title.value == "") {
-				aler("제목을 입력하세요");
+				alert("제목을 입력하세요");
 				f.title.focus();
 				return false;
 			}
 
 			if (f.content.value == "") {
-				aler("내용을 입력하세요");
+				alert("내용을 입력하세요");
 				f.content.focus();
 				return false;
 			}

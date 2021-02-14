@@ -64,7 +64,7 @@ INFO           VARCHAR2(500)  -->
 	<div class="join">
 
 		<form action="member/JoinProc.jsp" method="post" name="joinForm"
-			onsubmit="return trim()"
+			onsubmit="return trim();"
 			style="margin-top: 100px; margin-bottom: 100px;">
 			<table>
 				<tr>

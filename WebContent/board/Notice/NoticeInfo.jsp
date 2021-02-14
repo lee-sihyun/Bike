@@ -130,17 +130,13 @@ if(id ==null ){
 				%>
 				<tr >
 						<td  colspan = "2">
-							<input type= "submit" value="목록으로" 
-							onclick="location.href='BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp'" >&nbsp;&nbsp;
-							<input type= "submit"  value="삭제" 
-							
-							
-							onclick="location.href='
-							BikeMain.jsp?center=board/Notice/BoardDel.jsp?no=
-							<%=bean.getNo()%>'"
+							<input type="button" onclick="location.href='BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp'" 
+							value="목록">&nbsp;&nbsp;
+							<input type= "button"  value="삭제" 
+							onclick="location.href='BikeMain.jsp?center=board/Notice/Del.jsp?no=<%=bean.getNo()%>'"
 							
 							>&nbsp;&nbsp;
-							<input type= "submit"  value="수정">&nbsp;&nbsp;
+							<input type= "button"  value="수정" onclick="location.href='BikeMain.jsp?center=board/Notice/Update.jsp?no=<%=bean.getNo()%>'" >&nbsp;&nbsp;
 							
 							<input type="hidden" name="id"value="<%=bean.getId() %>">
 							
@@ -151,8 +147,8 @@ if(id ==null ){
 				<%}else { %>
 				<tr >
 						<td  colspan = "2">
-							<input type= "submit" value="목록으로" 
-							onclick="location.href='BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp'" >&nbsp;&nbsp;
+							<input type="button" onclick="location.href='BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp'" 
+							value="목록">&nbsp;&nbsp;
 							
 							</td>
 							</tr>
