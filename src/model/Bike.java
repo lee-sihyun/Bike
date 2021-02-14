@@ -108,7 +108,7 @@ public class Bike extends ConnectionPool {
 				
 			}
 			
-			
+			con.close();
 			
 
 		} catch (Exception e) {
