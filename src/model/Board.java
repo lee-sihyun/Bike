@@ -148,4 +148,49 @@ public class Board extends ConnectionPool {
 
 	}
 
+	/* 공지사항 삭제-Del.jsp */
+
+	public void delBoard(int no) {
+
+		getcon();
+
+		try {
+
+			String sql = "DELETE FROM NOTICEBOARD WHERE NO=? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+
+			pstmt.executeUpdate();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	/* 공지사항 수정 -UpdateProc.jsp */
+
+	public void upDateBoard(NoticeBoard bean) {
+
+		getcon();
+		try {
+
+			String sql = "UPDATE NOTICEBOARD SET TITLE=?,CONTENT=?,NBDATE=sysdate WHERE NO=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,bean.getTitle());
+			pstmt.setString(2, bean.getContent());
+			pstmt.setInt(3,bean.getNo());
+			
+			
+			pstmt.executeUpdate();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	
 }
