@@ -90,7 +90,7 @@ a {
 	<div class="rink">
 		<a href="BikeMain.jsp?center=reserve/BikeList.jsp">대여하기</a> 
 		<a href="#">예약확인</a> 
-		<a href="#">자유게시판</a> <a
+		<a href="BikeMain.jsp?center=board/Fboard/List.jsp">자유게시판</a> <a
 			href="BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp">공지사항</a>
 
 	</div>

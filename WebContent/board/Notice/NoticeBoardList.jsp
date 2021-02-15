@@ -9,16 +9,24 @@
 <meta charset="UTF-8">
 
 <style>
+a:link {
+	color: black;
+	text-decoration: none;
+}
 
- a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: underline;}
+a:visited {
+	color: black;
+	text-decoration: none;
+}
 
-
+a:hover {
+	color: black;
+	text-decoration: underline;
+}
 
 .container {
 	width: 1309px;
-	height: 855px;
+	height:1500px;
 }
 
 .content {
@@ -123,41 +131,48 @@
 	border: 0;
 	margin-top: 20px;
 }
-
-
-
-
 </style>
 </head>
 <body>
 	<%
 		request.setCharacterEncoding("UTF-8");
-	
-	
+
+	String id = (String) session.getAttribute("id");
+
+	if (id == null) {
+
+		id = "GUEST";
+	}
+
+	/*페이징 처리*/
+
+	int pageSize = 10;
+	String pageNum = request.getParameter("pageNum");
+	if (pageNum == null) {
+		pageNum = "1";
+	}
+
+	int count = 0;
+	int number = 0;
+
+	int currentPage = Integer.parseInt(pageNum);
 
 	Board board = new Board();
 
-	Vector<NoticeBoard> vec = board.getAllNotice();
-	
-	
-	
-	
+	count = board.getNoticeAllCount();
 
-String id=(String) session.getAttribute("id");
+	int startRow = (currentPage - 1) * pageSize + 1;
+	int endRow = currentPage * pageSize;
 
-if(id ==null ){
-	
-	id="GUEST";
-}
+	Vector<NoticeBoard> vec = board.getAllNotice(startRow, endRow);
+
+	number = count - (currentPage - 1) * pageSize;
+	%>
 
 
-
-	
-	
-	
-%>
 	<div class="container">
 		<div class="content">
+
 
 			<div class="board">
 
@@ -166,7 +181,11 @@ if(id ==null ){
 
 				</div>
 
+
 				<div class="search">
+
+
+
 
 
 
@@ -195,8 +214,8 @@ if(id ==null ){
 
 
 					</form>
-
 				</div>
+
 
 				<div class="board_box">
 
@@ -213,7 +232,7 @@ if(id ==null ){
 
 							<tr>
 
-
+								<th>글번호</th>
 								<th>제목</th>
 								<th>날짜</th>
 
@@ -225,9 +244,10 @@ if(id ==null ){
 							%>
 
 							<tr>
+								<td><%=number--%></td>
 								<td><a
 									href="BikeMain.jsp?center=board/Notice/NoticeInfo.jsp?no=<%=bean.getNo()%>">
-								 <%=bean.getTitle()%></a></td>
+										<%=bean.getTitle()%></a></td>
 								<td><%=bean.getNbdate()%></td>
 
 							</tr>
@@ -243,31 +263,108 @@ if(id ==null ){
 							}
 						%>
 
+
+
+
 					</table>
-					
-					
-					
-					
-				
-					<% if(id.equals("admin")) { %>
-					
+
+
+
+					<%
+						if (id.equals("admin")) {
+					%>
+
 					<button id="writeBtn"
 						onclick="location.href='BikeMain.jsp?center=board/Notice/BoardWrite.jsp'">
 						글작성</button>
-						
-						
-						<%} %>
-					
+
+
+					<%
+						}
+					%>
+
+
+					<p>
+
+						<%
+							if (count > 0) {
+							int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+
+							int startPage = 1;
+							if (currentPage % 10 != 0) {
+								startPage = (int) (currentPage / 10) * 10 + 1;
+							} else {
+								startPage = ((int) (currentPage / 10) - 1) * 10 + 1;
+							}
+
+							int pageBlock = 10;
+							int endPage = startPage * pageBlock - 1;
+
+							if (endPage > pageCount)
+								endPage = pageCount;
+
+							if (startPage > 10) {
+						%>
+
+						<a
+							href="BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp?pageNum=<%=startPage + 10%>">이전</a>
+
+
+						<%
+							}
+
+						//페이징 처리 
+						for (int i = startPage; i <= endPage; i++) {
+						%>
+
+						<a
+							href="BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp?pageNum=<%=i%>">[<%=i%>]
+						</a>
+
+
+						<%
+							}
+
+						//다음이라는 링크를 만들건지 파악
+						if (endPage < pageCount) {
+						%>
+
+						<a
+							href="BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp?pageNum=<%=startPage + 10%>">[다음]</a>
+
+
+						<%
+							}
+
+						}
+						%>
+
+
+					</p>
+
+
+
+
+
 				</div>
 
 
 
 			</div>
-			<div class="paging"></div>
+
+
+
+
+
+
+
+
 
 		</div>
-		<!-- conetent -->
+
+
 	</div>
+
 	<!-- container 끝 -->
 
 
