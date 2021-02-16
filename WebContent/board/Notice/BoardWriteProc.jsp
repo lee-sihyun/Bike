@@ -27,7 +27,8 @@
 	
 	
 	request.setCharacterEncoding("UTF-8");
-
+	
+	int no=Integer.parseInt(request.getParameter("no"));
 
 
 
@@ -49,6 +50,8 @@
 	alert("게시글 작성이 완료 되었습니다");
 
 	location.href="/Bike/BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp";
+	
+	
 	
 	</script>
 	

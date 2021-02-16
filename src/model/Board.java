@@ -136,10 +136,11 @@ public class Board extends ConnectionPool {
 
 		try {
 
-			String sql = "SELECT * FROM NOTICEBOARD WHERE TITLE=? ";
+			String sql = "SELECT * FROM NOTICEBOARD WHERE TITLE = ? ";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, title);
+
 
 			rs = pstmt.executeQuery();
 

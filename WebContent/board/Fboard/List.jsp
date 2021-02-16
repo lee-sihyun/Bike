@@ -69,7 +69,7 @@
 			<td>  <a href="BikeMain.jsp?center=board/Fboard/Info.jsp?no=<%=bean.getNo()%>"><%=bean.getTitle()%></a></td>
 			
 			<td width="" align="center"><%=bean.getId()%></td>
-			<td width="" align="center"><%=bean.getDay()%></td>
+			<td width="" align="center"><%=bean.getDay().substring(0,16)%></td>
 			<td width="" align="center"><%=bean.getReadcount()%></td>
 
 
