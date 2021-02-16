@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.Board"%>
 <%@page import="java.util.Vector"%>
 <%@page import="bean.NoticeBoard"%>
@@ -26,7 +29,7 @@ a:hover {
 
 .container {
 	width: 1309px;
-	height:1500px;
+	height: 1500px;
 }
 
 .content {
@@ -118,7 +121,7 @@ a:hover {
 .board_box table td {
 	border-bottom: 1px solid #dfdfdf;
 	color: #666;
-	padding: 20px 15px;
+	/*padding: 20px 15px;*/
 	text-align: center;
 }
 
@@ -144,6 +147,11 @@ a:hover {
 		id = "GUEST";
 	}
 
+	
+	
+	
+	
+	
 	/*페이징 처리*/
 
 	int pageSize = 10;
@@ -167,7 +175,29 @@ a:hover {
 	Vector<NoticeBoard> vec = board.getAllNotice(startRow, endRow);
 
 	number = count - (currentPage - 1) * pageSize;
+	
+	
+	
+	/*시간설정*/
+	
+
+	
+	
 	%>
+
+<jsp:useBean id="nbbean" class="bean.NoticeBoard">
+<jsp:setProperty name="nbbean" property="*"/>
+</jsp:useBean>
+<%
+/*Date d1=new Date();
+SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+d1=nbbean.getNbdate();
+
+d1=sdf.parse(sdf.format(d1));*/
+
+
+%>
+
 
 
 	<div class="container">
@@ -223,8 +253,9 @@ a:hover {
 					<table>
 
 						<colgroup>
-							<col width="75%">
 							<col width="25%">
+							<col width="50%">
+							<col width="75%">
 
 						</colgroup>
 						<tbody>
@@ -248,7 +279,7 @@ a:hover {
 								<td><a
 									href="BikeMain.jsp?center=board/Notice/NoticeInfo.jsp?no=<%=bean.getNo()%>">
 										<%=bean.getTitle()%></a></td>
-								<td><%=bean.getNbdate()%></td>
+								<td><%=bean.getNbdate().substring(0,16)%></td>
 
 							</tr>
 

@@ -9,6 +9,16 @@
 
 
 <body>
+
+	<%
+		String id = (String) session.getAttribute("id");
+
+	if (id == null) {
+
+		id = "GUEST";
+	}
+	%>
+
 	<table>
 		<tr>
 			<td align="center"><img alt="" src="img/Template/Maincenter1.JPG">

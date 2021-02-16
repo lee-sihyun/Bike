@@ -111,7 +111,7 @@ if(id ==null ){
 				<tr id="titleTop">
 						
 						<td ><%=bean.getTitle() %></td>
-						<td id="Ndate" ><%=bean.getNbdate() %></td>
+						<td id="Ndate" ><%=bean.getNbdate().substring(0,16) %></td>
 				</tr>
 				
 								

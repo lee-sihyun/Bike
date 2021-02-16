@@ -44,9 +44,9 @@
 
 
 
-	<form action="board/Notice/BoardWriteProc.jsp" method="get" 
-	name="BwcForm" onsubmit="return trim();">
-		
+	<form action="board/Notice/BoardWriteProc.jsp" method="get"
+		name="BwcForm" onsubmit="return trim();">
+
 		<table width="600" border="1" bordercolor="gray">
 
 			<tr height="40">
@@ -63,19 +63,17 @@
 			</tr>
 
 			<tr height="40">
-				<td align="center" colspan="2"><input type="submit" value="글쓰기" id="BwcForm">&nbsp;&nbsp;
-					<input type="reset" value="다시 작성">&nbsp;&nbsp; <input
-					type="hidden" name="id" value="<%=bean.getId()%>"> <!--<input type="hidden" value="nbdate">  -->
-
-				</td>
+				<td align="center" colspan="2"><input type="submit" value="글쓰기"
+					id="BwcForm">&nbsp;&nbsp; <input type="reset" value="다시 작성">&nbsp;&nbsp;
+					<input type="hidden" name="id" value="<%=bean.getId()%>"> <!--<input type="hidden" value="nbdate">  -->
+			<input type="hidden" name="no" value="<%=bean.getNo()%>">
 			</tr>
 		</table>
 	</form>
 
 	<!-- 공백체크 -->
 	<script type="text/javascript">
-	
-	function trim() {
+		function trim() {
 
 			var f = document.BwcForm;
 
