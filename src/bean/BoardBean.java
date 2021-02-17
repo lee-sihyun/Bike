@@ -6,7 +6,6 @@ ID        NOT NULL VARCHAR2(500)  -작성자
 TITLE     NOT NULL VARCHAR2(500)  -제목
 CONTENT   NOT NULL VARCHAR2(2000) -내용
 COMENT             VARCHAR2(500)  -댓글 null
-IMG                VARCHAR2(2000) -첨부파일 nul
 READCOUNT          NUMBER         -조회수 null
 DAY       NOT NULL DATE    -작성일          */
 public class BoardBean {
@@ -16,9 +15,11 @@ public class BoardBean {
 	String title;
 	String content;
 	String coment;
-	String img;
+
 	int readcount;
 	String day;
+	
+	
 	public int getNo() {
 		return no;
 	}
@@ -49,12 +50,7 @@ public class BoardBean {
 	public void setComent(String coment) {
 		this.coment = coment;
 	}
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
-	}
+	
 	public int getReadcount() {
 		return readcount;
 	}

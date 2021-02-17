@@ -14,11 +14,11 @@
 
 
 
-//int no=Integer.parseInt(request.getParameter("no"));
+int no=Integer.parseInt(request.getParameter("no"));
 
 Board board=new Board();
 
-board.upDateBoard(bean);
+board.updateNoticeBoard(bean);
 
 
 
@@ -28,11 +28,12 @@ board.upDateBoard(bean);
 
 <script type="text/javascript">
 alert("수정이완료되었습니다.");
+location.href="/Bike/BikeMain.jsp?center=board/Notice/NoticeInfo.jsp?no="+"<%=no%>"
 
 
 </script>
 
-<%response.sendRedirect(request.getContextPath() + "/BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp"); %>
+<!--response.sendRedirect(request.getContextPath() + "/BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp");  --> 
 
 
 

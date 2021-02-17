@@ -14,7 +14,7 @@
 int no=Integer.parseInt(request.getParameter("no"));
 
 Board board= new Board();
-board.delBoard(no);
+board.delNoticeBoard(no);
 
 
 

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.*;
+
 import bean.*;
 
 public class Reserve extends ConnectionPool {
@@ -24,14 +26,14 @@ CHARGER NOT NULL NUMBER     */
 			
 			
 			String sql="INSERT INTO BIKERE VALUES"
-					+ "(BIKERE_SEQ.NEXTVAL,?,?,?,?,?)";
+					+ "(BIKERE_SEQ.NEXTVAL,?,?,?,?,'예약완료')";
 			pstmt=con.prepareStatement(sql);
 			
-			pstmt.setInt(1, bean.getNo());
-			pstmt.setString(2, bean.getId());
-			pstmt.setInt(3, bean.getDday());
-			pstmt.setString(4, bean.getRday());
-			pstmt.setInt(5, bean.getCharger());
+
+			pstmt.setString(1, bean.getId());
+			pstmt.setInt(2, bean.getDday());
+			pstmt.setString(3, bean.getRday());
+			pstmt.setInt(4, bean.getCharger());
 
 		
 			
@@ -95,6 +97,110 @@ INFO     NOT NULL VARCHAR2(500)*/
 		
 		return bean;
 	}
+	
+	/*페이징처리를위한-reserve/ReList.jsp*/
+	
+	public int getReAllCount() {
+
+		getcon();
+
+		int count = 0;
+
+		try {
+
+			String sql = "SELECT COUNT(*) FROM BIKERE";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+
+			}
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+
+	}
+	
+	
+	/*전체게시글 반환*/
+	
+	public Vector<BikeRe> getAllRe(int startRow, int endRow) {
+
+		Vector<BikeRe> v = new Vector<>();
+
+		getcon();
+
+		try {
+
+			String sql = 
+					
+					
+					 "select * from "
+								+ "(select A.* ,Rownum Rnum from "
+								+ "(select *from BIKERE order by no desc)A)"
+								+ "where Rnum >= ? and Rnum <= ?";
+							
+					
+			
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setInt(1,startRow);
+			pstmt.setInt(2,endRow);
+			
+			rs = pstmt.executeQuery();	
+			
+			while (rs.next()) {
+
+				BikeRe bean = new BikeRe();
+				bean.setNo(rs.getInt(1));
+				bean.setId(rs.getString(2));
+				bean.setDday(rs.getInt(3));
+				bean.setRday(rs.getString(4));
+				bean.setCharger(rs.getInt(5));
+				bean.setProc(rs.getString(6));
+
+				v.add(bean);
+				
+			
+
+			}
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return v;
+	}
+	
+	
+	/*자전거 반납-ReList.jsp*/
+	
+	
+	
+	public void upDateProc(BikeRe bean) {
+		getcon();
+		
+		
+		try {
+			
+			String sql="UPDATE BIKERE SET PROC='반납완료' WHERE NO=?";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setInt(1, bean.getNo());
+			pstmt.executeUpdate();
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	
 }

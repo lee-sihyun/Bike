@@ -206,7 +206,7 @@ INFO           VARCHAR2(500)  -->
 			}
 
 		}
-	</script>
+		</script>
 
 
 </body>
