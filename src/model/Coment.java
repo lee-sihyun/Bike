@@ -104,15 +104,18 @@ public class Coment extends ConnectionPool {
 
 	/*ÄÚ¸àÆ®»èÁ¦*/
 	
-	public void delComent(int seq) {
+	public void delComent(int seq ,int no) {
 
 		getcon();
 
 		try {
 
-			String sql = "DELETE FROM COMENT WHERE SEQ=? ";
+			String sql = "DELETE FROM COMENT WHERE SEQ=? AND NO=? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, seq);
+			pstmt.setInt(2, no);
+		
+			
 
 			pstmt.executeUpdate();
 			con.close();
@@ -121,6 +124,29 @@ public class Coment extends ConnectionPool {
 			e.printStackTrace();
 		}
 
+	}
+	
+	
+	
+	
+
+	public void updateComent(ComentBean bean) {
+
+		getcon();
+		try {
+
+			String sql = "UPDATE COMENT SET COMENT=?, DDAY=SYSDATE WHERE SEQ=?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, bean.getComent());
+			pstmt.setInt(2, bean.getSeq());
+
+			pstmt.executeUpdate();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

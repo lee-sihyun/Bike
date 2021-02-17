@@ -8,6 +8,19 @@
 
 <body>
 	<%
+	
+	
+	
+	String id = (String) session.getAttribute("id");
+
+	if (id == null) {
+
+		id = "GUEST";
+	}
+
+	
+	
+	
 		int pageSize = 10;
 
 	String pageNum = request.getParameter("pageNum");
@@ -84,7 +97,16 @@
 
 	</table>
 
+					<%if (!(id.equals("GUEST"))) { %>
 
+					<button id="writeBtn"
+						onclick="location.href='BikeMain.jsp?center=board/Fboard/BoardWrite.jsp'">
+						글작성</button>
+
+				
+				
+				<%} %>
+					
 
 <p>
 

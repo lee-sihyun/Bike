@@ -36,8 +36,11 @@
 	</script>
 
 	<%
-	
 	}
+	
+	
+	
+	
 	
 	Date d1=new Date();
 	Date d2=new Date();
@@ -49,9 +52,17 @@
 			d1=sdf.parse(rbean.getRday());
 			d2=sdf.parse(sdf.format(d2));
 	
-		
+			
+			
+			
+			
 			
 			int compare =d1.compareTo(d2);
+			
+			
+			
+			
+			
 			if(compare < 0) {//기준일보다 이전 날짜 선택
 	
 	

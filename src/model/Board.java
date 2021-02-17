@@ -201,7 +201,7 @@ public class Board extends ConnectionPool {
 
 	/* 공지사항 삭제-Del.jsp */
 
-	public void delBoard(int no) {
+	public void delNoticeBoard(int no) {
 
 		getcon();
 
@@ -221,7 +221,7 @@ public class Board extends ConnectionPool {
 	}
 	/* 공지사항 수정 -UpdateProc.jsp */
 
-	public void upDateBoard(NoticeBoard bean) {
+	public void updateNoticeBoard(NoticeBoard bean) {
 
 		getcon();
 		try {
@@ -279,7 +279,7 @@ public class Board extends ConnectionPool {
 	 * READCOUNT NUMBER -조회수 null DAY NOT NULL DATE -작성일
 	 */
 
-	/* 자유게시판 리스트-board/board/List.jsp 전체글의 개수 리턴 */
+	/* 자유게시판 리스트-board/fboard/List.jsp 전체글의 개수 리턴 */
 
 	public int getAllCount() {
 
@@ -313,14 +313,14 @@ public class Board extends ConnectionPool {
 		getcon();
 //조회수는 초기값으로 0을부여
 		try {
-			String sql="INSERT INTO BOARD VALUES (BOARD_SEQ.NEXTVAL,?,?,?,?,?,0,SYSDATE)";
+			String sql="INSERT INTO BOARD VALUES (BOARD_SEQ.NEXTVAL,?,?,?,?,0,SYSDATE)";
 			pstmt=con.prepareStatement(sql);
 			
 		pstmt.setString(1,bean.getId() );
 		pstmt.setString(2, bean.getTitle());
 		pstmt.setString(3,bean.getContent());
 		pstmt.setString(4,bean.getComent());
-		pstmt.setString(4,bean.getImg());
+
 		
 		pstmt.executeUpdate();
 		con.close();
@@ -345,7 +345,7 @@ public class Board extends ConnectionPool {
 			String sql = 
 			 "select * from "
 				+ "(select A.* ,Rownum Rnum from "
-				+ "(select *from board )A)"
+				+ "(select *from board order by no desc)A)"
 				+ "where Rnum >= ? and Rnum <= ?";
 			
 			
@@ -370,9 +370,8 @@ public class Board extends ConnectionPool {
 				bean.setTitle(rs.getString(3));
 				bean.setContent(rs.getString(4));
 				bean.setComent(rs.getString(5));
-				bean.setImg(rs.getString(6));
-				bean.setReadcount(rs.getInt(7));
-				bean.setDay(rs.getString(8).toString());
+				bean.setReadcount(rs.getInt(6));
+				bean.setDay(rs.getString(7).toString());
 		
 				v.add(bean);
 
@@ -396,6 +395,14 @@ public class Board extends ConnectionPool {
 		getcon();
 
 		try {
+			/*조회수 증가*/
+
+				String readcountup="UPDATE BOARD SET READCOUNT=READCOUNT+1 WHERE NO=?";
+				pstmt=con.prepareStatement(readcountup);
+				pstmt.setInt(1, no);
+				pstmt.executeUpdate();
+			
+			
 
 			String sql = "SELECT * FROM BOARD WHERE NO=?";
 			pstmt = con.prepareStatement(sql);
@@ -410,9 +417,9 @@ public class Board extends ConnectionPool {
 				bean.setTitle(rs.getString(3));
 				bean.setContent(rs.getString(4));
 				bean.setComent(rs.getString(5));
-				bean.setImg(rs.getString(6));
-				bean.setReadcount(rs.getInt(7));
-				bean.setDay(rs.getString(8).toString());
+
+				bean.setReadcount(rs.getInt(6));
+				bean.setDay(rs.getString(7).toString());
 			}
 
 			con.close();
@@ -426,4 +433,52 @@ public class Board extends ConnectionPool {
 	}
 	
 
+	
+	/*자유게시판 게시물 삭제- board/Fboard/Del.jsp*/
+	public void delBoard(int no) {
+
+		getcon();
+
+		try {
+
+			String sql = "DELETE FROM BOARD WHERE NO=? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+
+			pstmt.executeUpdate();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	
+	
+	/*자유게시판  게시물 수정  board/Fboard/UpdateProc.jsp*/
+	
+	
+	public void updateBoard(BoardBean bean) {
+
+		getcon();
+		try {
+
+			String sql = "UPDATE BOARD SET TITLE=?,CONTENT=?,DAY=sysdate WHERE NO=?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, bean.getTitle());
+			pstmt.setString(2, bean.getContent());
+			pstmt.setInt(3, bean.getNo());
+
+			pstmt.executeUpdate();
+			con.close(); 	
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 }

@@ -76,23 +76,7 @@
 	Board board = new Board();
 	BoardBean bean = board.getBoardInfo(no);
 
-	/*
-	Coment coment =new Coment();
-	ComentBean cbean =new ComentBean();
-	int seq=cbean.getSeq();
-
-	*/
-	/*
-	Coment coment =new Coment();
-	ComentBean cbean= coment.getComentInfo(no);
-		
-		*/
-	/*
-	Coment coment =new Coment();
-	ComentBean cbean =new ComentBean();
-	int seq=cbean.getSeq();
-	 cbean= coment.getComentInfo(no,seq);
-	*/
+	
 	%>
 
 
@@ -126,22 +110,14 @@
 
 
 
-			<%
-				/*equals는 대상값자체를 비교*/
-			//String id2=(String) session.getAttribute("id");
-
-			//System.out.println(bean.getId());
-			%>
-
-
+			
 
 
 			<!-- 댓글출력 -->
 
 
 
-			<form action="board/Fboard/ComentUpdateProc.jsp" method="get"
-				>
+			<form action="board/Fboard/ComentUpdateProc.jsp" method="get">
 				<table>
 
 
@@ -180,7 +156,7 @@
 						<%if((cbean.getId()).equals(id)) { %>
 						
 						<input type="button" value="수정"
-							onclick="location.href='BikeMain.jsp?center=board/Fboard/ComentUpdate.jsp?seq=<%=cbean.getSeq()%>&&no=<%=bean.getNo()%>'">&nbsp;&nbsp;
+							onclick="location.href='BikeMain.jsp?center=board/Fboard/Update.jsp?seq=<%=cbean.getSeq()%>&&no=<%=bean.getNo()%>'">&nbsp;&nbsp;
 
 
 
@@ -242,16 +218,22 @@
 				} else {
 			%>
 
-			<form action="board/Fboard/ComentInsertProc.jsp?" method="get" onsubmit="return Comenttrim();" name="comentForm">
+			<form action="board/Fboard/ComentUpdateProc.jsp?" method="get"  onsubmit="return Comenttrim();" name="comentForm">
 
 
 				<div class="comentdiv">
 
 
 
-					<input type="text" name="coment" placeholder="댓글을 입력하세요"> <input
-						type="submit" value="제출"> <input type="hidden" name="no"
-						value="<%=bean.getNo()%>"> <input type="hidden" name="id"
+					<input type="text" name="coment" value="<%=cbean.getComent() %>" > 
+					
+					
+					
+					<input
+						type="submit" value="제출"> 
+						<input type="hidden" name="no"
+						value="<%=bean.getNo()%>"> 
+						<input type="hidden" name="id"
 						value="<%=id%>">
 
 
@@ -328,21 +310,18 @@
 	<!-- 컨테이너끝 -->
 	<script type="text/javascript">
 	
-		
-		
-		function Comenttrim() {
+	function Comenttrim() {
 
-			var f = document.comentForm;
+		var f = document.comentForm;
 
-			if (f.coment.value == "") {
-				alert("내용을 입력하세요");
-				f.coment.focus();
-				return false;
-			}
-
+		if (f.coment.value == "") {
+			alert("내용을 입력하세요");
+			f.coment.focus();
+			return false;
 		}
 
-		
+	}
+
 	</script>
 
 </body>

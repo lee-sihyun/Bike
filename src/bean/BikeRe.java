@@ -12,12 +12,26 @@ RDAY    NOT NULL VARCHAR2(500)
 CHARGER NOT NULL NUMBER     */
 public class BikeRe {
 
+
+
 	
 	private int no;
 	private String id;
 	private int dday;
 	private String rday;
 	private int charger;
+	private String proc;
+	
+	
+	
+	
+	
+	public String getProc() {
+		return proc;
+	}
+	public void setProc(String proc) {
+		this.proc = proc;
+	}
 	public int getNo() {
 		return no;
 	}

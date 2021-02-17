@@ -61,7 +61,7 @@ ine-height: 43px;
 	%>
 
 
-	<form action="BikeMain.jsp?center=reserve/ReResult.jsp" method="post">
+	<form action="BikeMain.jsp?center=reserve/ReResult.jsp" method="post" onsubmit="retrun trim();" name="ReservForm">
 		<table>
 
 
@@ -161,7 +161,22 @@ ine-height: 43px;
 
 	</form>
 
+<script type="text/javascript">
 
+		/*공백체크*/
+		function trim() {
+			var f = document.ReservForm;
+
+			if (f.rday.value == null) {
+				alert("대여일을 선택 하세요");
+				f.rday.focus();
+				return false;
+			}
+
+			
+
+		}
+		</script>
 
 </body>
 </html>
