@@ -7,24 +7,6 @@
 
 <head>
 <style type="text/css">
-
-/*input{
-
-ine-height: 43px;
-	text-align: center;
-	display: block;
-	cursor: pointer;
-	width: 100%;
-	height: 43px;
-	font-weight: bold;
-	font-size: 14px;
-	border-radius: 3px;
-	color: #fff;
-	background: #056531;
-
-}
-*/
-
 </style>
 
 
@@ -53,27 +35,23 @@ ine-height: 43px;
 		temp = "영등포";
 	else if (cate == 5)
 		temp = "송파";
-	
-
-	
-	
-	
 	%>
 
 
-	<form action="BikeMain.jsp?center=reserve/ReResult.jsp" method="post" onsubmit="retrun trim();" name="ReservForm">
+	<form action="BikeMain.jsp?center=reserve/ReResult.jsp" method="post"
+		onsubmit="retrun trim();" name="ReservForm">
 		<table>
 
 
 
 			<tr>
-			
-				
 
 
-		
 
-			
+
+
+
+
 
 				<td rowspan="6" width="500" align="center"><img alt=""
 					src="img/bike/<%=bean.getImg()%>" width="450"></td>
@@ -83,7 +61,7 @@ ine-height: 43px;
 
 
 			</tr>
-			
+
 			<tr>
 
 
@@ -91,10 +69,10 @@ ine-height: 43px;
 				<td><%=bean.getPrice()%>원</td>
 
 			</tr>
-			
 
 
-	<tr>
+
+			<tr>
 
 				<td>대여일</td>
 				<td><input type="date" name="rday" size="15"></td>
@@ -136,33 +114,29 @@ ine-height: 43px;
 
 
 
-	
-			
 
 
 
 
-		
 
-		
-			
 
-		
+
+
+
+
+
+
 
 		</table>
-		<input type="hidden" name="no" value="<%=bean.getNo()%>"> 
-		
-				<input type="hidden" name="price" value="<%=bean.getPrice()%>">
-			
-		
-		<input
+		<input type="hidden" name="no" value="<%=bean.getNo()%>"> <input
+			type="hidden" name="price" value="<%=bean.getPrice()%>"> <input
 			type="hidden" name="img" value="<%=bean.getImg()%>"> <input
-			type="submit" value="예약하기">
+			type="submit" value="예약하기"
+			style="-webkit-box-shadow: 0 0 0 1000px white inset; color: green; margin-right: 15px;">
 
 	</form>
 
-<script type="text/javascript">
-
+	<script type="text/javascript">
 		/*공백체크*/
 		function trim() {
 			var f = document.ReservForm;
@@ -173,10 +147,8 @@ ine-height: 43px;
 				return false;
 			}
 
-			
-
 		}
-		</script>
+	</script>
 
 </body>
 </html>

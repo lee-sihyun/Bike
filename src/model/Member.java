@@ -34,10 +34,10 @@ public class Member extends ConnectionPool {
 
 	}
 
-	//로그인 검증 LoginProc.jsp 
+	// 로그인 검증 LoginProc.jsp
 	public int getMemer(String id, String pass) {
 
-		int result = 0;//count 함수를 이용하여 0이면 회원이 없도록 설정
+		int result = 0;// count 함수를 이용하여 0이면 회원이 없도록 설정
 		getcon();
 
 		try {
@@ -52,7 +52,7 @@ public class Member extends ConnectionPool {
 
 			if (rs.next()) {
 
-				result = rs.getInt(1); //0또는 1값이 저장
+				result = rs.getInt(1); // 0또는 1값이 저장
 			}
 			con.close();
 
@@ -61,6 +61,39 @@ public class Member extends ConnectionPool {
 		}
 		return result;
 
+	}
+
+	/* 아이디 중복 체크 -member/idCheckProc.jsp */
+
+	public MemberBean search(String id) {
+		MemberBean bean = new MemberBean();
+		getcon();
+
+		try {
+
+			String sql = "SELECT * FROM MEMBER WHERE ID=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				bean.setId(rs.getString(1));
+				bean.setPass(rs.getString(2));
+				bean.setEmail(rs.getString(3));
+				bean.setTel(rs.getString(4));
+				bean.setJob(rs.getString(5));
+				bean.setAge(rs.getString(6));
+				bean.setInfo(rs.getString(6));
+
+			}
+
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
 	}
 
 }

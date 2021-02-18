@@ -26,7 +26,7 @@
 	<%
 	
 	
-	request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("utf-8");
 	
 	//int no=Integer.parseInt(request.getParameter("no"));
 

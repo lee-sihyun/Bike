@@ -1,3 +1,4 @@
+<%@page import="bean.ComentBean"%>
 <%@page import="model.Coment"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,10 +16,11 @@
 
 
 
-<%
 
+<% 
+int seq = Integer.parseInt(request.getParameter("seq"));
+int no = Integer.parseInt(request.getParameter("no"));
 
-int no=Integer.parseInt(request.getParameter("no"));
 
 Coment coment= new Coment();
 coment.updateComent(bean);

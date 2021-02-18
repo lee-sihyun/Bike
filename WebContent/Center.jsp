@@ -33,7 +33,7 @@
 		</tr>
 
 
-		<tr>
+		<tr >
 			<td align="center"><img alt="" src="img/Template/Maincenter3.JPG"></td>
 		</tr>
 

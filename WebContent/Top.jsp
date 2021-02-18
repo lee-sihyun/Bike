@@ -59,6 +59,8 @@ a {
 
 				<button id="login"
 					onclick="location.href='BikeMain.jsp?center=member/Login.jsp'">로그인</button>
+					<button id="join"
+					onclick="location.href='BikeMain.jsp?center=member/Join.jsp'">회원가입</button>
 				<%
 					} else {
 				%>
@@ -68,9 +70,7 @@ a {
 				<%
 					}
 				%></td>
-			<td><button id="join"
-					onclick="location.href='BikeMain.jsp?center=member/Join.jsp'">회원가입</button>
-			</td>
+			
 
 
 

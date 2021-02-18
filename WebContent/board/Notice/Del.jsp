@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
+
+
 </head>
 <body>
 <%
@@ -23,7 +25,10 @@ board.delNoticeBoard(no);
 
 <script type="text/javascript">
 
-alert("게시물 삭제가 완료 되었습니다.");
+
+
+
+alert("삭제완료");
 location.href = "BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp";
 </script>
 

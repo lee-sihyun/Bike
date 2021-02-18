@@ -5,7 +5,23 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
 
+<style type="text/css">
+
+#sbbtn, #allbtn{
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    color: green;
+    margin-right: 15px;
+}
+
+#allbtn {
+margin-top: 20px;
+
+}
+</style>
+
+</head>
 <body>
 
 	<!-- 
@@ -32,8 +48,9 @@
 	
 	%>
 
+<h3><%=temp%> 따릉이 목록 </h3>
 
-
+<div>
 	<form action="BikeMain.jsp?center=reserve/BikeCategoryList.jsp" method="post">
 		<font size="3" color="gray"><b>지역별 조회</b></font>&nbsp;&nbsp; 
 		<select
@@ -44,18 +61,19 @@
 			<option value="3">도봉</option>
 			<option value="4">영등포</option>
 			<option value="5">송파</option>
-		</select> <input type="submit" value="검색 ">&nbsp;&nbsp;
-	 
+		</select> <input type="submit" value="검색 " id="sbbtn">&nbsp;&nbsp;
+
 	</form>
-<button onclick="location.href='BikeMain.jsp?center=reserve/BikeList.jsp'">
+ 
+ 	<button onclick="location.href='BikeMain.jsp?center=reserve/BikeList.jsp'" id="allbtn">
 		전체조회</button>
 	 
+</div>
 
-
-<table width="1000" border ="1" bordercolor="gray">
-		<tr height="100">
+<table id="listtable">
+		<tr >
 			<td align="center"colspan="3">
-				<font size="7" color="gray"><%=temp%> 따릉이 목록</font>
+			
 			</td>
 		</tr>
 	<% 
@@ -68,17 +86,16 @@
 			BikeBean bean = v.get(i);
 			if(j%3==0){
 	%>		
-			<tr height="220">
+			<tr >
 	<% 
 			}
 	%>
-			<td width="333" align="center">
+			<td  align="center">
 				<a href ="BikeMain.jsp?center=reserve/ReInfo.jsp?no=<%=bean.getNo()%>">
 			
 				
 				<img alt ="" src="img/bike/<%=bean.getImg()%>" width="300" height="200"> 
-				</a><p>
-				<font size ="3" color="gray"><b> 따릉이 : <%=bean.getName()%></b></font></p>
+				</a>
 			</td>
 
 	<% 		

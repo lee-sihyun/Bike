@@ -3,7 +3,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
 
+
+</head>
 <body>
 <jsp:useBean id="bean" class="bean.NoticeBoard">
 
@@ -12,7 +15,7 @@
 </jsp:useBean>
 <%
 
-
+request.setCharacterEncoding("utf-8");
 
 int no=Integer.parseInt(request.getParameter("no"));
 

@@ -26,7 +26,7 @@ CHARGER NOT NULL NUMBER     */
 			
 			
 			String sql="INSERT INTO BIKERE VALUES"
-					+ "(BIKERE_SEQ.NEXTVAL,?,?,?,?,'예약완료')";
+					+ "(BIKERE_SEQ.NEXTVAL,?,?,?,?,'예약완료',?)";
 			pstmt=con.prepareStatement(sql);
 			
 
@@ -34,6 +34,7 @@ CHARGER NOT NULL NUMBER     */
 			pstmt.setInt(2, bean.getDday());
 			pstmt.setString(3, bean.getRday());
 			pstmt.setInt(4, bean.getCharger());
+			pstmt.setInt(5, bean.getPrice());
 
 		
 			
@@ -86,6 +87,7 @@ INFO     NOT NULL VARCHAR2(500)*/
 				bean.setPrice(rs.getInt(4));
 				bean.setImg(rs.getString(5));
 				bean.setInfo(rs.getString(6));
+				bean.setPrice(rs.getInt(7));
 				
 				
 			}
@@ -162,6 +164,7 @@ INFO     NOT NULL VARCHAR2(500)*/
 				bean.setRday(rs.getString(4));
 				bean.setCharger(rs.getInt(5));
 				bean.setProc(rs.getString(6));
+				bean.setPrice(rs.getInt(7));
 
 				v.add(bean);
 				

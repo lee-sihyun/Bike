@@ -1,72 +1,60 @@
 <%@page import="model.Board"%>
 <%@page import="bean.NoticeBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <meta charset="UTF-8">
 
 <style type="text/css">
-
 .container {
-
-width:1472px;
-height: 1050px;
-
-
+	width: 1472px;
+	height: 1050px;
 }
 
 .content {
-    width: 1030px;
-    margin: 0 auto;
-    position: relative;
-    min-height: 500px;
+	width: 1030px;
+	margin: 0 auto;
+	position: relative;
+	min-height: 500px;
+}
+
+.read_box {
+	width: auto;
+	height: 600px;
 }
 
 
-.read_box{
-
-width: auto;
-height: 787px;
-
-
-
+.read_box table {
+	width: 100%;
+	height: 502px;
+	margin-top: 50px;
 }
 
-.read_box #titleTop {
-    padding: 10px 15px;
-    border-bottom: #056531 1px solid;
-    border-top: none;
-    line-height: 20px;
-
+.read_box table tr td {
+	border-bottom: 1px solid #444444;
+	padding: 10px 15px;
 }
 
-.read_box #titleTop td {
-	color: #222;
-    font-size: 14px;
-    margin-bottom: 5px;
+#ldubtn input {
+	-webkit-box-shadow: 0 0 0 1000px white inset;
+    color: green;
+    margin-right: 15px;
+}
+
+#ldubtn, #listbtn {
+	text-align: center;
 }
 
 
-
-#Ndate {
-color: #666;
-    font-size: 13px;
-    margin-right: 20px;
-
-}
-
-.read_box #id {
-    
-    width:1000px;
-    height:701px;
-    
-    padding: 10px 15px;
-    color: #666;
-    font-size: 12px;
-    line-height: 18px;
-
+.swal-button 
+{
+	background-color: #FFB2D9;
+	font-size: 12px;
+	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
 
 </style>
@@ -74,94 +62,94 @@ color: #666;
 
 </head>
 <body>
-<!-- 공지사항게시물 상세화면 -->
+	<!-- 공지사항게시물 상세화면 -->
 
-<%
+	<%
+		int no = Integer.parseInt(request.getParameter("no"));
 
-int no= Integer.parseInt(request.getParameter("no"));
+	Board board = new Board();
+	NoticeBoard bean = board.getNoticeInfo(no);
 
-Board board= new Board();
-NoticeBoard bean= board.getNoticeInfo(no);
+	String id = (String) session.getAttribute("id");
 
+	if (id == null) {
 
-String id=(String) session.getAttribute("id");
-
-if(id ==null ){
-	
-	id="GUEST";
-}
-
+		id = "GUEST";
+	}
+	%>
 
 
-%>
+	<div class="container">
+
+		<div class="content">
+			
+
+				<div class="read_box">
 
 
-<div class="container">
+					<!--  -->
 
-<div class="content">
-<form action="" method="post">
+					<table>
 
-<div class="read_box">
+						<tr id="titleTop" style="height: 100px;">
 
-
-<!--  -->
-
-<table >
-				
-				<tr id="titleTop">
-						
-						<td ><%=bean.getTitle() %></td>
-						<td id="Ndate" ><%=bean.getNbdate().substring(0,16) %></td>
-				</tr>
-				
-								
-				
-					
-				
-				
-	
-				<tr id="dd">
-					
-						<td ><%=bean.getContent() %></td>
-				</tr>
-				
-				
-			<%if(id.equals("admin")) {
-				%>
-				<tr >
-						<td  colspan = "2">
-							<input type="button" onclick="location.href='BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp'" 
-							value="목록">&nbsp;&nbsp;
-							<input type= "button"  value="삭제" 
-							onclick="location.href='BikeMain.jsp?center=board/Notice/Del.jsp?no=<%=bean.getNo()%>'"
-							
-							>&nbsp;&nbsp;
-							<input type= "button"  value="수정" onclick="location.href='BikeMain.jsp?center=board/Notice/Update.jsp?no=<%=bean.getNo()%>'" >&nbsp;&nbsp;
-							
-							<input type="hidden" name="id"value="<%=bean.getId() %>">
-							
-					
-						</td>
-				</tr>
-				
-				<%}else { %>
-				<tr >
-						<td  colspan = "2">
-							<input type="button" onclick="location.href='BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp'" 
-							value="목록">&nbsp;&nbsp;
-							
+							<td>제목 &nbsp;&nbsp;<strong><b><%=bean.getTitle()%></b></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(작성시간
+								&nbsp;&nbsp;<%=bean.getNbdate().substring(0, 16)%>)
 							</td>
-							</tr>
-							<%} %>
-				
-			</table>		
-</div>
-</form>
 
-</div>
-<!-- 컨텐트끝 -->
 
-</div> 
-<!-- 컨테이너끝 -->
+
+
+						</tr>
+
+
+
+						<tr>
+
+							<td colspan="2"><%=bean.getContent()%></td>
+						</tr>
+
+
+
+
+					</table>
+				</div>
+				<!-- 버튼리스트  -->
+
+				<%
+					if (id.equals("admin")) {
+				%>
+				<div id="ldubtn">
+					<input type="button"
+						onclick="location.href='BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp'"
+						value="목록">&nbsp;&nbsp; <input type="button" value="삭제" 
+						onclick="  location.href='BikeMain.jsp?center=board/Notice/Del.jsp?no=<%=bean.getNo()%>'"	>&nbsp;&nbsp;
+					<input type="button" value="수정"
+						onclick="location.href='BikeMain.jsp?center=board/Notice/Update.jsp?no=<%=bean.getNo()%>'">&nbsp;&nbsp;
+
+					<input type="hidden" name="id" value="<%=bean.getId()%>">
+
+
+					<%
+						} else {
+					%>
+					<div id="listbtn">
+						<input type="button"
+							onclick="location.href='BikeMain.jsp?center=board/Notice/NoticeBoardList.jsp'"
+							value="목록">&nbsp;&nbsp;
+					</div>
+					<%
+						}
+					%>
+				</div>
+
+			
+
+		</div>
+		<!-- 컨텐트끝 -->
+
+	</div>
+	<!-- 컨테이너끝 -->
 </body>
+
 </html>

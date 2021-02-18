@@ -135,11 +135,12 @@ public class Coment extends ConnectionPool {
 		getcon();
 		try {
 
-			String sql = "UPDATE COMENT SET COMENT=?, DDAY=SYSDATE WHERE SEQ=?";
+			String sql = "UPDATE COMENT SET COMENT=?,DDAY=SYSDATE WHERE SEQ=? AND NO=?";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, bean.getComent());
 			pstmt.setInt(2, bean.getSeq());
+			pstmt.setInt(3, bean.getNo());
 
 			pstmt.executeUpdate();
 			con.close();
