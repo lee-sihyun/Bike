@@ -42,13 +42,12 @@
 }
 
 #tbtn input {
-	color: #fff;
-	cursor: pointer;
-	background-color: #056531;
-	padding: 0 20px;
-	height: 44px;
-	text-align: center;
+	-webkit-box-shadow: 0 0 0 1000px white inset;
+    color: green;
+    margin-right: 15px;
 }
+
+
 </style>
 </head>
 <body>
@@ -67,7 +66,7 @@
 		<div class="content">
 			<div class="read_box">
 
-				<form action="board/Notice/UpdateProc.jsp" method="post"
+				<form action="board/Notice/UpdateProc.jsp" method="get"
 					name="BudForm" onsubmit="return trim();">
 
 					<table id="writetable">

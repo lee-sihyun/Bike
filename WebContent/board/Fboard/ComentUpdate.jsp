@@ -266,7 +266,7 @@
 				} else {
 			%>
 
-			<form action="board/Fboard/ComentUpdateProc.jsp?" method="post"
+			<form action="board/Fboard/ComentUpdateProc.jsp?" method="get"
 				onsubmit="return Comenttrim();" name="comentForm">
 
 

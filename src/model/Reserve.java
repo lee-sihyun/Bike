@@ -87,7 +87,7 @@ INFO     NOT NULL VARCHAR2(500)*/
 				bean.setPrice(rs.getInt(4));
 				bean.setImg(rs.getString(5));
 				bean.setInfo(rs.getString(6));
-				bean.setPrice(rs.getInt(7));
+			
 				
 				
 			}
