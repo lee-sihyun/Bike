@@ -12,6 +12,9 @@
 
 
 	<%
+	
+	
+	request.setCharacterEncoding("utf-8");
 	int seq = Integer.parseInt(request.getParameter("seq"));
 	int no = Integer.parseInt(request.getParameter("no"));
 	

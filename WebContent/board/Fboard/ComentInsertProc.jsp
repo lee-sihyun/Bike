@@ -16,6 +16,8 @@
 	</jsp:useBean>
 <%
 
+request.setCharacterEncoding("utf-8"); 
+
 String id=(String) session.getAttribute("id");
 int no=Integer.parseInt(request.getParameter("no"));
 

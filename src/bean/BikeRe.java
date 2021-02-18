@@ -9,7 +9,8 @@ NO      NOT NULL NUMBER
 ID      NOT NULL VARCHAR2(500) 
 DDAY    NOT NULL NUMBER        
 RDAY    NOT NULL VARCHAR2(500) 
-CHARGER NOT NULL NUMBER     */
+CHARGER NOT NULL NUMBER     
+price */
 public class BikeRe {
 
 
@@ -21,11 +22,18 @@ public class BikeRe {
 	private String rday;
 	private int charger;
 	private String proc;
+	private int price;
 	
 	
 	
 	
 	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public String getProc() {
 		return proc;
 	}

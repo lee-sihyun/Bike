@@ -37,8 +37,7 @@
 
 	<%
 	}
-	
-	
+
 	
 	
 	
@@ -76,6 +75,10 @@
 	
 	<%} 
 			
+			
+		
+		
+			
 			/*아이디*/
 	String id2=(String) session.getAttribute("id");
 		rbean.setId(id2);
@@ -95,7 +98,7 @@
 		
 		
 		/*자전거비용=(자전거비용*대여기간)+옵션가*/
-		int bikePrice=bikebean.getPrice()*rbean.getDday();
+		int bikePrice=rbean.getPrice()*rbean.getDday();
 	/*int bikePrice=(bikebean.getPrice()*rbean.getDday()+charger ) ;*/
 
 	
@@ -103,13 +106,10 @@
 	%>
 	
 	
+	<h3>예약완료</h3>
 	
 				<table>
-			<tr>
-				<td align="center" colspan="2">
-					예약 완료 화면
-				</td>
-			</tr>
+		
 			
 			<tr >
 				<td align="center">
@@ -119,19 +119,19 @@
 			
 			<tr >
 				<td align="center">
-					 예약 금액<%=bikePrice %>원
+					 예약 금액&nbsp;<%=bikePrice %>&nbsp;원
 				</td>
 			</tr>
 			
 			<tr >
 				<td align="center">
-					옵션 금액 <%=charger %>원 
+					옵션 금액&nbsp;<%=charger %>&nbsp;원 
 				</td>
 			</tr>
 			
 			<tr >
 				<td align="center">
-					총 금액원<%= bikePrice+charger%> 원
+					총 금액원&nbsp;<strong><b><%= bikePrice+charger%>&nbsp;원</b></strong>
 				</td>
 			</tr>
 		</table>

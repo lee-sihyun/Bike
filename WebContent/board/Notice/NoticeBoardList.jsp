@@ -116,6 +116,7 @@ a:hover {
 
 .board_box table th {
 	text-align: center;
+	border-bottom: 1px solid #dfdfdf;
 }
 
 .board_box table td {
@@ -123,6 +124,10 @@ a:hover {
 	color: #666;
 	/*padding: 20px 15px;*/
 	text-align: center;
+}
+
+.board_box table tr {
+	height: 40px;
 }
 
 #writeBtn {
@@ -147,11 +152,6 @@ a:hover {
 		id = "GUEST";
 	}
 
-	
-	
-	
-	
-	
 	/*페이징 처리*/
 
 	int pageSize = 10;
@@ -175,28 +175,16 @@ a:hover {
 	Vector<NoticeBoard> vec = board.getAllNotice(startRow, endRow);
 
 	number = count - (currentPage - 1) * pageSize;
-	
-	
-	
-	/*시간설정*/
-	
 
-	
-	
+	/*시간설정*/
 	%>
 
-<jsp:useBean id="nbbean" class="bean.NoticeBoard">
-<jsp:setProperty name="nbbean" property="*"/>
-</jsp:useBean>
-<%
-/*Date d1=new Date();
-SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-d1=nbbean.getNbdate();
-
-d1=sdf.parse(sdf.format(d1));*/
-
-
-%>
+	<jsp:useBean id="nbbean" class="bean.NoticeBoard">
+		<jsp:setProperty name="nbbean" property="*" />
+	</jsp:useBean>
+	<%
+		
+	%>
 
 
 
@@ -279,7 +267,7 @@ d1=sdf.parse(sdf.format(d1));*/
 								<td><a
 									href="BikeMain.jsp?center=board/Notice/NoticeInfo.jsp?no=<%=bean.getNo()%>">
 										<%=bean.getTitle()%></a></td>
-								<td><%=bean.getNbdate().substring(0,16)%></td>
+								<td><%=bean.getNbdate().substring(0, 16)%></td>
 
 							</tr>
 
@@ -301,19 +289,8 @@ d1=sdf.parse(sdf.format(d1));*/
 
 
 
-					<%
-						if (id.equals("admin")) {
-					%>
 
-					<button id="writeBtn"
-						onclick="location.href='BikeMain.jsp?center=board/Notice/BoardWrite.jsp'">
-						글작성</button>
-
-
-					<%
-						}
-					%>
-
+					<!-- 페이징처리 -->
 
 					<p>
 
@@ -373,7 +350,22 @@ d1=sdf.parse(sdf.format(d1));*/
 
 					</p>
 
+					<!-- 페이징처리 끝 -->
 
+					<!-- 글쓰기버튼 -->
+
+					<%
+						if (id.equals("admin")) {
+					%>
+
+					<button id="writeBtn"
+						onclick="location.href='BikeMain.jsp?center=board/Notice/BoardWrite.jsp'">
+						글작성</button>
+
+
+					<%
+						}
+					%>
 
 
 

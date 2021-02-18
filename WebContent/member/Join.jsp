@@ -70,14 +70,16 @@ INFO           VARCHAR2(500)  -->
 				<tr>
 
 					<td>아이디</td>
-					<td><input type="text" name="id" id="inputid"></td>
+					<td><input type="text" name="id" ></td>
+				
+					
 
 				</tr>
 
 				<tr>
 
 					<td>비밀번호</td>
-					<td><input type="password" name="pass" id="inputpass"></td>
+					<td><input type="password" name="pass" ></td>
 
 				</tr>
 
@@ -174,6 +176,10 @@ INFO           VARCHAR2(500)  -->
 				f.id.focus();
 				return false;
 			}
+			
+				
+			
+		
 
 			if (f.pass.value == "") {
 				alert("비밀번호를 입력하세요");

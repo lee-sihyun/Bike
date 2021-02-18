@@ -27,42 +27,72 @@
 
 .read_box {
 	width: auto;
-	height: 787px;
+	height: 600px;
 }
 
-.read_box #titleTop {
+.read_box table {
+	width: 100%;
+	height: 502px;
+	margin-top: 50px;
+}
+
+.read_box table tr td {
+	border-bottom: 1px solid #444444;
 	padding: 10px 15px;
-	border-bottom: #056531 1px solid;
-	border-top: none;
-	line-height: 20px;
 }
 
-.read_box #titleTop td {
-	color: #222;
-	font-size: 14px;
-	margin-bottom: 5px;
+#ldubtn input {
+	color: #fff;
+	cursor: pointer;
+	background-color: #056531;
+	padding: 0 20px;
+	height: 44px;
 }
 
-#Ndate {
-	color: #666;
-	font-size: 13px;
-	margin-right: 20px;
+#ldubtn, #listbtn {
+	text-align: center;
 }
 
-.read_box #id {
-	width: 1000px;
-	height: 701px;
+/*<!--코멘트 !-->*/
+#cmtd {
+	border-bottom: 1px solid #444444;
 	padding: 10px 15px;
-	color: #666;
-	font-size: 12px;
-	line-height: 18px;
+}
+
+.comentList input {
+	color: green;
+	margin-right: 15px;
+	-webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+.BtnList {
+	margin-top: 20px;
+}
+
+.comentdiv {
+	margin-top: 20px;
+}
+
+#cms {
+	color: #fff;
+	cursor: pointer;
+	background-color: #056531;
+	padding: 0 20px;
+	height: 22px;
+	border: 0;
+}
+
+.BtnList input {
+	color: green;
+	margin-right: 15px;
+	-webkit-box-shadow: 0 0 0 1000px white inset;
 }
 </style>
 
 
 </head>
 <body>
-	<!-- 자유게시판게시물 상세화면 -->
+	<!-- 댓글 수정화면-->
 
 
 
@@ -75,119 +105,137 @@
 
 	Board board = new Board();
 	BoardBean bean = board.getBoardInfo(no);
-
-	
 	%>
-
-
 	<div class="container">
 
 		<div class="content">
 
 
+			<div class="read_box">
 
 
-			<!--  -->
-
-			<table>
-
-				<tr id="titleTop">
-
-					<td>제목 &nbsp;&nbsp;<%=bean.getTitle()%></td>
-					<td id="Ndate">작성시간 &nbsp;&nbsp;<%=bean.getDay().substring(0, 16)%></td>
-				</tr>
-
-				<tr>
-
-					<td>작성자&nbsp;&nbsp; <%=bean.getId()%></td>
-				</tr>
-
-				<tr>
-					<td>내용</td>
-					<td><%=bean.getContent()%></td>
-				</tr>
-			</table>
-
-
-
-			
-
-
-			<!-- 댓글출력 -->
-
-
-
-			<form action="board/Fboard/ComentUpdateProc.jsp" method="get">
 				<table>
 
-
-					<!-- 댓글 -->
-					<tr id="dd" style="text-align: center;">
-						<td>작성자</td>
-						<td>내용</td>
-						<td>작성시간</td>
-						<td>수정</td>
-						<td>삭제</td>
+					<tr id="titleTop" style="height: 100px;">
 
 
 
+
+						<td>제목 &nbsp;&nbsp;<strong><b><%=bean.getTitle()%></b></strong>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성자&nbsp;&nbsp;<strong><b><%=bean.getId()%>&nbsp;&nbsp;</b></strong>님
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(작성시간
+							&nbsp;&nbsp;<%=bean.getDay().substring(0, 16)%>)
 					</tr>
 
-					<%
-						Coment coment = new Coment();
-					ComentBean cbean = new ComentBean();
-					Vector<ComentBean> v = coment.getComentInfo(no);
-
-					for (int i = 0; i < v.size(); i++) {
-
-						cbean = v.get(i);
-					%>
-					<tr style="text-align: center;">
 
 
+					<tr>
 
-
-						<td><%=cbean.getId()%></td>
-						<td><%=cbean.getComent()%></td>
-						<td><%=cbean.getDday().substring(0, 16)%></td>
-
-						<td>
-						
-						<%if((cbean.getId()).equals(id)) { %>
-						
-						<input type="button" value="수정"
-							onclick="location.href='BikeMain.jsp?center=board/Fboard/Update.jsp?seq=<%=cbean.getSeq()%>&&no=<%=bean.getNo()%>'">&nbsp;&nbsp;
-
-
-
-							<input type="button" value="삭제"
-							onclick="location.href='BikeMain.jsp?center=board/Fboard/ComentDel.jsp?seq=<%=cbean.getSeq()%>&&no=<%=bean.getNo()%>'">
-
-							<input type="hidden" value="<%=bean.getNo()%>" name="no">
-							<input type="hidden" value="<%=cbean.getSeq()%>" name="seq">
-
-					<%} %>
-
-						</td>
-
-
+						<td colspan="2"><%=bean.getContent()%></td>
 					</tr>
-					<%
-						}
-					%>
-
-
-
-
-
-
-
-
-
 				</table>
-			</form>
 
-			<!-- 댓글출력 -->
+
+			</div>
+
+
+
+
+			<!-- 댓글출력 read_box -->
+
+
+			<div class="comentList" style="border: 1px solid;">
+				<form action="board/Fboard/ComentUpdateProc.jsp" method="get">
+					<table>
+
+						<colgroup>
+							<col width="20%">
+							<col width="30%">
+							<col width="20%">
+							<col width="15%">
+							<col width="15%">
+
+						</colgroup>
+
+
+						<tr id="cmtd" style="text-align: center;">
+							<td id="cmtd">작성자</td>
+							<td id="cmtd">내용</td>
+							<td id="cmtd">작성시간</td>
+							<td id="cmtd">수정</td>
+							<td id="cmtd">삭제</td>
+
+
+
+						</tr>
+
+						<%
+							Coment coment = new Coment();
+						ComentBean cbean = new ComentBean();
+						Vector<ComentBean> v = coment.getComentInfo(no);
+
+						for (int i = 0; i < v.size(); i++) {
+
+							cbean = v.get(i);
+						%>
+						<tr style="text-align: center;">
+
+
+
+
+							<td><%=cbean.getId()%></td>
+							<td><%=cbean.getComent()%></td>
+							<td><%=cbean.getDday().substring(0, 16)%></td>
+
+							<td>
+								<%
+									if ((cbean.getId()).equals(id)) {
+								%> <input type="button" value="수정"
+								onclick="location.href='BikeMain.jsp?center=board/Fboard/ComentUpdate.jsp?seq=<%=cbean.getSeq()%>&&no=<%=bean.getNo()%>'">&nbsp;&nbsp;
+
+
+
+
+
+								<input type="hidden" value="<%=bean.getNo()%>" name="no">
+								<input type="hidden" value="<%=cbean.getSeq()%>" name="seq">
+
+								<%
+									}
+								%>
+
+							</td>
+
+							<td>
+								<%
+									if ((cbean.getId()).equals(id)) {
+								%> <input type="button" value="삭제"
+								onclick="location.href='BikeMain.jsp?center=board/Fboard/ComentDel.jsp?seq=<%=cbean.getSeq()%>&&no=<%=bean.getNo()%>'">
+
+								<input type="hidden" value="<%=bean.getNo()%>" name="no">
+								<input type="hidden" value="<%=cbean.getSeq()%>" name="seq">
+								<%
+									}
+								%>
+							</td>
+						</tr>
+						<%
+							}
+						%>
+
+
+
+
+
+
+
+
+
+					</table>
+				</form>
+			</div>
+
+			<!-- 댓글출력 .comentList끝  -->
 
 
 
@@ -218,23 +266,24 @@
 				} else {
 			%>
 
-			<form action="board/Fboard/ComentUpdateProc.jsp?" method="get"  onsubmit="return Comenttrim();" name="comentForm">
+			<form action="board/Fboard/ComentUpdateProc.jsp?" method="post"
+				onsubmit="return Comenttrim();" name="comentForm">
 
 
 				<div class="comentdiv">
 
 
 
-					<input type="text" name="coment" value="<%=cbean.getComent() %>" > 
-					
-					
-					
-					<input
-						type="submit" value="제출"> 
-						<input type="hidden" name="no"
-						value="<%=bean.getNo()%>"> 
-						<input type="hidden" name="id"
-						value="<%=id%>">
+					<input type="text" name="coment" value="<%=cbean.getComent()%>">
+
+
+
+
+					<input type="submit" value="제출" id="cms"
+						style="border: none; border-bottom: 1px solid;"> <input
+						type="hidden" name="seq" value="<%=cbean.getSeq()%>"> <input
+						type="hidden" name="no" value="<%=bean.getNo()%>"> <input
+						type="hidden" name="id" value="<%=id%>">
 
 
 
@@ -246,6 +295,10 @@
 				}
 			%>
 			<!-- 댓글 입력끝 -->
+
+
+
+
 
 
 			<!-- 게시물 처리 버튼 -->
@@ -285,19 +338,9 @@
 				%>
 
 
-
 			</div>
 
-			<!-- 게시물 처리 버튼 -->
-
-
-
-
-
-
-
-
-
+			<!-- BtnList 게시물 처리 버튼 -->
 
 
 
@@ -309,20 +352,17 @@
 
 	<!-- 컨테이너끝 -->
 	<script type="text/javascript">
-	
-	function Comenttrim() {
+		function Comenttrim() {
 
-		var f = document.comentForm;
+			var f = document.comentForm;
 
-		if (f.coment.value == "") {
-			alert("내용을 입력하세요");
-			f.coment.focus();
-			return false;
+			if (f.coment.value == "") {
+				alert("내용을 입력하세요");
+				f.coment.focus();
+				return false;
+			}
+
 		}
-
-	}
-
 	</script>
-
 </body>
 </html>

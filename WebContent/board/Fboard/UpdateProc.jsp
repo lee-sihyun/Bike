@@ -12,7 +12,7 @@
 </jsp:useBean>
 <%
 
-
+request.setCharacterEncoding("utf-8");
 
 int no=Integer.parseInt(request.getParameter("no"));
 
