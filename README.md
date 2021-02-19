@@ -7,9 +7,11 @@
 
 # Demo
 
+![프로젝트화면](https://user-images.githubusercontent.com/54271574/108473099-f0951c00-72d0-11eb-8bc0-b0d2c8d1b4f9.jpg)
 
 # Model
 
+![데이터모델](https://user-images.githubusercontent.com/54271574/108472286-e58dbc00-72cf-11eb-88ad-dbac36d798e7.JPG)
 
 
 # Technologies
