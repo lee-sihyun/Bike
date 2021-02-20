@@ -18,9 +18,9 @@
 # Technologies
 
 * Java
-* HTML,CSS
+* HTML
 * JavaScript
-* Oracle,SQL
+* Oracle
 * Git, Github
 
 # Features
