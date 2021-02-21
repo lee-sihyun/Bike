@@ -17,7 +17,7 @@
 
 # Technologies
 
-* Java
+* Java 1.8
 * HTML
 * JavaScript
 * Oracle
